@@ -23,6 +23,7 @@
   --hl1:#FFF07A; --hl2:#FFC978; --hl3:#A92B2B; --hl-ink:#16283A; --hl3-ink:#FFFFFF;
   --cal:rgba(15,118,110,.5);
   --body:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR",sans-serif;
+  --fs:1;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -37,7 +38,7 @@
   --cal:rgba(20,184,166,.5); color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--body);overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 calc(16px*var(--fs))/1.55 var(--body);overflow-x:hidden}
 button,input,textarea{font:inherit;color:inherit}
 button{background:none;border:0;padding:0;cursor:pointer;text-align:left}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
@@ -47,32 +48,32 @@ h1,h2,h3{margin:0;font-family:var(--body);font-weight:700;letter-spacing:-.01em;
 .app{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;min-height:100dvh}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.brand{font:700 18px/1 var(--body)}
-.status{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink2);min-height:32px}
+.brand{font:700 calc(18px*var(--fs))/1 var(--body)}
+.status{display:flex;align-items:center;gap:7px;font-size:calc(13px*var(--fs));color:var(--ink2);min-height:32px}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--ink2);flex:none}
 .status.ok i{background:var(--accent)}.status.bad i{background:var(--warn)}.status.busy i{background:#D99A1E}
 main{padding-block:0 104px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:820px;width:100%;margin-inline:auto;min-width:0}
 nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);background:var(--page);border-top:1px solid var(--rule);
   padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
-nav.tabs button{padding:11px 4px 12px;text-align:center;font-size:14px;font-weight:500;color:var(--ink2)}
+nav.tabs button{padding:11px 4px 12px;text-align:center;font-size:calc(14px*var(--fs));font-weight:500;color:var(--ink2)}
 nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-shadow:inset 0 2px 0 var(--accent)}
 @media (min-width:900px){
   .app{grid-template-columns:190px minmax(0,1fr);grid-template-rows:auto 1fr}
   .topbar{grid-column:1/3}
   nav.tabs{position:sticky;top:12px;align-self:start;display:flex;flex-direction:column;background:none;border:0;padding:12px 0 0 16px;gap:2px}
-  nav.tabs button{text-align:left;padding:9px 12px;font-size:15px}
+  nav.tabs button{text-align:left;padding:9px 12px;font-size:calc(15px*var(--fs))}
   nav.tabs button[aria-current="page"]{box-shadow:inset 3px 0 0 var(--accent)}
   main{padding-bottom:48px;margin-left:0}
 }
 
 .dayhead{display:flex;align-items:center;gap:6px;padding-block:6px 14px}
-.dayhead h1{font-size:clamp(25px,6vw,34px);line-height:1.2;flex:1;min-width:0}
-.icon{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;font-size:22px;color:var(--ink2);text-align:center}
+.dayhead h1{font-size:calc(clamp(25px,6vw,34px)*var(--fs));line-height:1.2;flex:1;min-width:0}
+.icon{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;font-size:calc(22px*var(--fs));color:var(--ink2);text-align:center}
 .icon:hover{background:var(--page)}
-.today-link{font-size:14px;color:var(--accent);font-weight:500;padding:8px}
+.today-link{font-size:calc(14px*var(--fs));color:var(--accent);font-weight:500;padding:8px}
 
 .add{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr) auto;gap:8px;margin-bottom:14px}
-.add input,.field input,.field textarea,.search{width:100%;min-width:0;background:var(--page);border:1px solid var(--rule);border-radius:4px;padding:11px 12px;font-size:16px}
+.add input,.field input,.field textarea,.search{width:100%;min-width:0;background:var(--page);border:1px solid var(--rule);border-radius:4px;padding:11px 12px;font-size:max(16px,calc(16px*var(--fs)))}
 .add input:focus,.field input:focus,.field textarea:focus,.search:focus{outline:2px solid var(--ink);outline-offset:-1px}
 .add #word{font-family:var(--body);font-weight:600}
 .btn{background:var(--ink);color:var(--page);border-radius:4px;padding:11px 18px;font-weight:600;text-align:center;white-space:nowrap}
@@ -82,9 +83,9 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 @media (max-width:560px){.add{grid-template-columns:minmax(0,1fr) auto}.add #word{grid-column:1/3}}
 
 .memo{position:relative;margin-bottom:14px}
-.memo textarea{display:block;width:100%;min-height:68px;resize:none;background:var(--page);border:1px solid var(--rule);border-radius:4px;padding:10px 12px 24px;font-size:16px;line-height:1.5}
+.memo textarea{display:block;width:100%;min-height:68px;resize:none;background:var(--page);border:1px solid var(--rule);border-radius:4px;padding:10px 12px 24px;font-size:max(16px,calc(16px*var(--fs)));line-height:1.5}
 .memo textarea:focus{outline:2px solid var(--ink);outline-offset:-1px}
-.memo output{position:absolute;right:10px;bottom:5px;font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.memo output{position:absolute;right:10px;bottom:5px;font-size:calc(12px*var(--fs));color:var(--ink2);font-variant-numeric:tabular-nums}
 .memo output.full{color:var(--warn);font-weight:600}
 .strip{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:11px 14px;margin-bottom:14px;background:var(--sheet);color:var(--on-sheet);border-radius:4px;font-weight:500}
 
@@ -93,50 +94,54 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 .row{display:grid;grid-template-columns:42px minmax(0,1fr);border-bottom:1px solid var(--rule);position:relative}
 .row:last-child{border-bottom:0}
 .tick{width:42px;min-height:48px;display:grid;place-items:center}
-.tick span{width:20px;height:20px;border:1.5px solid var(--ink2);border-radius:50%;display:grid;place-items:center;font-size:13px;color:transparent}
+.tick span{width:20px;height:20px;border:1.5px solid var(--ink2);border-radius:50%;display:grid;place-items:center;font-size:calc(13px*var(--fs));color:transparent}
 .done .tick span{background:var(--ink2);color:var(--page)}
 .entry{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:2px 14px;padding:11px 14px;width:100%;min-width:0}
 .entry:hover{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 7px;min-width:0}
-.w{font:600 18px/1.35 var(--body);overflow-wrap:anywhere;padding-inline:4px;margin-inline:-4px;border-radius:2px}
+.w{font:600 calc(18px*var(--fs))/1.35 var(--body);overflow-wrap:anywhere;padding-inline:4px;margin-inline:-4px;border-radius:2px}
 .t1{background:var(--hl1);color:var(--hl-ink)}.t2{background:var(--hl2);color:var(--hl-ink)}.t3{background:var(--hl3);color:var(--hl3-ink)}
-.n{font-size:12px;font-weight:600;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.n{font-size:calc(12px*var(--fs));font-weight:600;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
 .mean{min-width:0;overflow-wrap:anywhere}
-.pos{font-size:13px;color:var(--ink2);margin-right:5px}
+.pos{font-size:calc(13px*var(--fs));color:var(--ink2);margin-right:5px}
 .ko{color:var(--accent);font-weight:500}
-.ex{grid-column:2;font-size:14px;line-height:1.5;color:var(--ink2);overflow-wrap:anywhere}
-.ex em{display:block;font-style:normal;font-size:13px;opacity:.85}
+.ex{grid-column:2;font-size:calc(14px*var(--fs));line-height:1.5;color:var(--ink2);overflow-wrap:anywhere}
+.ex em{display:block;font-style:normal;font-size:calc(13px*var(--fs));opacity:.85}
 .done .w{text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:2px}
 .done .w,.done .mean,.done .ex{opacity:.62}
-.wait{color:var(--ink2);font-size:14px}
+.wait{color:var(--ink2);font-size:calc(14px*var(--fs))}
 .chips{grid-column:2;display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 11px}
-.chip{font-size:13px;padding:5px 9px;border-radius:3px;box-shadow:inset 0 0 0 1px var(--rule);color:var(--ink2);font-variant-numeric:tabular-nums;background:none}
+.chip{font-size:calc(13px*var(--fs));padding:5px 9px;border-radius:3px;box-shadow:inset 0 0 0 1px var(--rule);color:var(--ink2);font-variant-numeric:tabular-nums;background:none}
 .chip:hover{color:var(--ink)}
 .empty{padding:26px 18px 26px 58px;color:var(--ink2)}
 .flash{animation:flash 1.1s ease-out}
 @keyframes flash{0%,40%{background:var(--tint)}100%{background:transparent}}
 
+.pick{display:inline-flex;flex-wrap:wrap;gap:4px}
+.pick button{min-height:34px;padding:5px 10px;border-radius:3px;font-size:calc(13px*var(--fs));font-weight:500;color:var(--ink2);box-shadow:inset 0 0 0 1px var(--rule)}
+.pick button[aria-pressed="true"]{background:var(--sheet);color:var(--on-sheet);box-shadow:none}
+.sortbar{display:flex;justify-content:flex-end;margin-bottom:8px}
 .seg{display:flex;gap:18px;margin-bottom:12px;border-bottom:1px solid var(--rule);overflow-x:auto}
 .seg button{padding:9px 1px;font-weight:500;color:var(--ink2);white-space:nowrap}
 .seg button[aria-pressed="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent);font-weight:600}
 .seg b{font-weight:500;font-variant-numeric:tabular-nums}
 .search{margin-bottom:12px}
-.pagetitle{font-size:clamp(25px,6vw,34px);padding-block:6px 14px}
-.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--ink2);margin-bottom:12px}
+.pagetitle{font-size:calc(clamp(25px,6vw,34px)*var(--fs));padding-block:6px 14px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:calc(13px*var(--fs));color:var(--ink2);margin-bottom:12px}
 .legend span span{padding-inline:6px}
 
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
-.cal .dow{font-size:13px;color:var(--ink2);text-align:center;padding-block:4px}
-.day{aspect-ratio:1/1;background:var(--page);padding:6px;display:flex;flex-direction:column;justify-content:space-between;border-radius:3px;font-variant-numeric:tabular-nums;font-size:14px;min-width:0}
+.cal .dow{font-size:calc(13px*var(--fs));color:var(--ink2);text-align:center;padding-block:4px}
+.day{aspect-ratio:1/1;background:var(--page);padding:6px;display:flex;flex-direction:column;justify-content:space-between;border-radius:3px;font-variant-numeric:tabular-nums;font-size:calc(14px*var(--fs));min-width:0}
 .day.blank{background:none}
 .day.on{background:var(--cal)}
 .day.today{box-shadow:inset 0 0 0 2px var(--accent)}
-.day small{font-size:12px;font-weight:600;align-self:flex-end}
+.day small{font-size:calc(12px*var(--fs));font-weight:600;align-self:flex-end}
 @media (max-width:420px){.day{padding:4px}}
 
 .section{margin-bottom:30px}
 .sechead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
-.sechead h2{font-size:21px}
+.sechead h2{font-size:calc(21px*var(--fs))}
 .drill{list-style:none;margin:0;padding:0;background:var(--page);border:1px solid var(--rule);border-radius:4px;position:relative;overflow:hidden}
 .drill li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);position:relative}
 .drill li+li{border-top:1px solid var(--rule)}
@@ -147,7 +152,7 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 .drill .b .mean{transition:opacity 0s .2s}
 .drill.covered li:not(.peek) .b .mean{opacity:0}
 .drill.covered li.peek .b{position:relative;z-index:2}
-.hint{font-size:14px;color:var(--ink2);margin:8px 0 0}
+.hint{font-size:calc(14px*var(--fs));color:var(--ink2);margin:8px 0 0}
 
 .setup{display:grid;gap:10px}
 .opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:14px;background:var(--page);border:1px solid var(--rule);border-radius:4px;font-weight:500}
@@ -155,32 +160,32 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 .opt[disabled]{opacity:.5;cursor:default}
 .card{background:var(--page);border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:grid;grid-template-rows:minmax(150px,auto) minmax(170px,auto);width:100%;position:relative}
 .card .q{padding:28px 18px;display:grid;place-items:center;text-align:center;border-bottom:1px solid var(--margin)}
-.card .q .w{font-size:clamp(30px,8vw,44px);line-height:1.2}
+.card .q .w{font-size:calc(clamp(30px,8vw,44px)*var(--fs));line-height:1.2}
 .card .q .n{display:block;margin-top:6px}
 .card .a{padding:20px 18px;position:relative;overflow:hidden;text-align:center;display:grid;align-content:center;gap:8px}
-.card .a .ko{font-size:21px}
-.card .a .ex{font-size:15px;grid-column:auto}
+.card .a .ko{font-size:calc(21px*var(--fs))}
+.card .a .ex{font-size:calc(15px*var(--fs));grid-column:auto}
 .card .cover{position:absolute;inset:0;background:var(--sheet);color:var(--on-sheet);display:grid;place-items:center;font-weight:500;width:100%;text-align:center;transition:transform .34s cubic-bezier(.2,.8,.2,1)}
 .card.open .cover{transform:translateY(102%);visibility:hidden;transition:transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s .34s}
-.cardbar{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--ink2);margin-bottom:8px;font-variant-numeric:tabular-nums}
+.cardbar{display:flex;justify-content:space-between;align-items:center;font-size:calc(14px*var(--fs));color:var(--ink2);margin-bottom:8px;font-variant-numeric:tabular-nums}
 .actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
 .actions .btn{white-space:normal;padding-inline:6px}
 
 dialog{border:0;border-radius:6px;background:var(--page);color:var(--ink);padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px)}
 dialog::backdrop{background:rgba(15,24,42,.5)}
 .dlg{padding:20px;display:grid;gap:13px}
-.dlg h2{font-size:24px;overflow-wrap:anywhere}
-.dlg h3{font-size:17px;margin-top:8px}
-.field{display:grid;gap:4px;font-size:14px;color:var(--ink2)}
+.dlg h2{font-size:calc(24px*var(--fs));overflow-wrap:anywhere}
+.dlg h3{font-size:calc(17px*var(--fs));margin-top:8px}
+.field{display:grid;gap:4px;font-size:calc(14px*var(--fs));color:var(--ink2)}
 .field input,.field textarea{color:var(--ink)}
 .field textarea{resize:vertical;min-height:64px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .btns{display:flex;flex-wrap:wrap;gap:8px}
-.note{font-size:14px;color:var(--ink2);margin:0}
-.err{font-size:14px;color:var(--warn);margin:0}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(68px + env(safe-area-inset-bottom,0px));z-index:50;background:var(--ink);color:var(--page);padding:10px 14px;border-radius:4px;display:flex;gap:14px;align-items:center;font-size:15px;width:max-content;max-width:calc(100vw - 32px)}
+.note{font-size:calc(14px*var(--fs));color:var(--ink2);margin:0}
+.err{font-size:calc(14px*var(--fs));color:var(--warn);margin:0}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(68px + env(safe-area-inset-bottom,0px));z-index:50;background:var(--ink);color:var(--page);padding:10px 14px;border-radius:4px;display:flex;gap:14px;align-items:center;font-size:calc(15px*var(--fs));width:max-content;max-width:calc(100vw - 32px)}
 .toast button{color:var(--toast-btn);font-weight:600;white-space:nowrap}
-.banner{background:var(--tint);color:var(--ink);padding:9px 12px;border-radius:4px;font-size:14px;margin-bottom:12px}
+.banner{background:var(--tint);color:var(--ink);padding:9px 12px;border-radius:4px;font-size:calc(14px*var(--fs));margin-bottom:12px}
 @media (min-width:900px){.toast{bottom:24px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -262,8 +267,8 @@ function merge(a,b){
   for(const id of new Set([...Object.keys(a.entries),...Object.keys(b.entries)])){
     const x=a.entries[id],y=b.entries[id];
     if(!x||!y){out.entries[id]={...(x||y)};continue}
-    const del=Math.max(x.del||0,y.del||0);
-    out.entries[id]=del?{...x,del}:{...x};
+    const at=e=>e.up||e.del||0;
+    out.entries[id]={...(at(x)>=at(y)?x:y)};
   }
   const an=a.notes||{},bn=b.notes||{};
   for(const d of new Set([...Object.keys(an),...Object.keys(bn)])){
@@ -310,10 +315,25 @@ function toggle(k){
   setStatus(w,was==='mastered'?'learning':'mastered');commit();
   if(w.st==='mastered')toast('암기 완료로 이동함',()=>{setStatus(w,was);commit()});
 }
+function renameWord(k,text,f){
+  const w=S.words[k],nk=norm(text),now=Date.now();
+  const ids=Object.entries(S.entries).filter(([,e])=>e.k===k&&!e.del).map(([i])=>i);
+  const live=!!byKey[nk];
+  if(!live){ // meanings written for the misspelling are dropped unless the person changed them here
+    const keep=(v,old)=>v!==old?v:'';
+    const ko=w.mine?f.ko:keep(f.ko,w.ko);
+    S.words[nk]={...w,w:text,pos:keep(f.pos,w.pos),ko,ex:keep(f.ex,w.ex),exKo:keep(f.exKo,w.exKo),mine:!!ko,metaAt:now};
+    delete fillState[nk];
+  }
+  ids.forEach(i=>Object.assign(S.entries[i],{k:nk,up:now}));
+  commit();
+  toast(live?'같은 단어가 있어 하나로 합침':'단어 수정함',()=>{const t=Date.now();ids.forEach(i=>Object.assign(S.entries[i],{k,up:t}));commit()});
+  enqueue(nk);
+}
 function removeEntries(k,date){
   const ids=Object.entries(S.entries).filter(([,e])=>e.k===k&&!e.del&&(!date||e.d===date)).map(([i])=>i);
-  ids.forEach(i=>S.entries[i].del=Date.now());commit();
-  toast('삭제함',()=>{ids.forEach(i=>{delete S.entries[i].del});commit()});
+  const now=Date.now();ids.forEach(i=>Object.assign(S.entries[i],{del:now,up:now}));commit();
+  toast('삭제함',()=>{const t=Date.now();ids.forEach(i=>Object.assign(S.entries[i],{del:0,up:t}));commit()});
 }
 
 /* ---------- auto-fill ---------- */
@@ -401,7 +421,7 @@ async function fromFree(word){
 const queue=[]; let filling=false;
 function enqueue(k){
   const w=S.words[k];
-  if(!w||(w.pos&&w.ko&&w.ex)||fillState[k]==='fail'||queue.includes(k))return;
+  if(!w||!byKey[k]||(w.pos&&w.ko&&w.ex)||fillState[k]==='fail'||queue.includes(k))return;
   fillState[k]='wait';queue.push(k);renderSoft();runQueue();
 }
 async function runQueue(){
@@ -495,6 +515,14 @@ function paintStatus(cls,text){
 }
 
 /* ---------- rendering ---------- */
+const SORTS=[['time','작성순'],['az','A-Z'],['za','Z-A']];
+const byWord=(a,b)=>S.words[a].w.localeCompare(S.words[b].w,'en',{sensitivity:'base'});
+function sorted(keys,mode){
+  if(mode==='az')return[...keys].sort(byWord);
+  if(mode==='za')return[...keys].sort((a,b)=>byWord(b,a));
+  return keys;
+}
+const sortBar=(act,cur,opts)=>`<div class="sortbar"><div class="pick" role="group" aria-label="단어 정렬">${opts.map(([id,t])=>`<button data-act="${act}" data-s="${id}" aria-pressed="${cur===id}">${t}</button>`).join('')}</div></div>`;
 function tier(n){return n>=4?'t3':n===3?'t2':n===2?'t1':''}
 function meanHTML(k){
   const w=S.words[k],f=fillState[k];
@@ -533,8 +561,9 @@ const VIEWS={
       <output id="memoCount" class="${memoOf(day).length>=MEMO_MAX?'full':''}">${memoOf(day).length}/${MEMO_MAX}</output>
     </div>
     ${p?`<button class="strip" data-act="tab" data-t="review"><span>${p===shift(today(),-1)?'어제':longDate(p)} 적은 단어 ${keysOn(p).length}개 복습하기</span><span aria-hidden="true">›</span></button>`:''}
+    ${keys.length>=2?sortBar('sortDiary',cfg.sortDiary||'time',SORTS):''}
     <ul class="notebook" aria-label="${longDate(day)}에 적은 단어">
-      ${keys.length?keys.map(k=>rowHTML(k,{date:day})).join(''):`<li class="empty">${isToday?'적은 단어 없음. 위 칸에 단어 입력.':'이 날 적은 단어 없음.'}</li>`}
+      ${keys.length?sorted(keys,cfg.sortDiary||'time').map(k=>rowHTML(k,{date:day})).join(''):`<li class="empty">${isToday?'적은 단어 없음. 위 칸에 단어 입력.':'이 날 적은 단어 없음.'}</li>`}
     </ul>`;
   },
   cal(){
@@ -581,11 +610,15 @@ const VIEWS={
   },
   box(){
     const q=norm(query);
-    const lists={hard:hard().sort((a,b)=>byKey[b].size-byKey[a].size||(datesOf(b).pop()>datesOf(a).pop()?1:-1)),
-      learning:learning().sort((a,b)=>datesOf(b).pop()>datesOf(a).pop()?1:-1),
-      done:liveKeys().filter(k=>S.words[k].st==='mastered').sort((a,b)=>S.words[b].stAt-S.words[a].stAt)};
+    const recent=(a,b)=>datesOf(b).pop().localeCompare(datesOf(a).pop());
+    const lists={hard:hard(),learning:learning(),done:liveKeys().filter(k=>S.words[k].st==='mastered')};
+    const showCount=boxTab==='hard'&&!q;
+    const mode=(cfg.sortBox==='count'||!cfg.sortBox)?(showCount?'count':'time'):cfg.sortBox;
     let list=lists[boxTab];
     if(q)list=liveKeys().filter(k=>k.includes(q)||(S.words[k].ko||'').includes(q));
+    list=[...list].sort(recent);
+    if(mode==='count')list.sort((a,b)=>byKey[b].size-byKey[a].size);
+    list=sorted(list,mode);
     const emptyText=q?'검색 결과 없음.':{hard:'두 번 이상 적은 단어가 여기에 표시됨.',learning:'적은 단어 없음.',done:'암기 완료한 단어가 여기에 표시됨.'}[boxTab];
     return`<h1 class="pagetitle">단어 모음</h1>
     <input class="search" id="search" type="search" placeholder="단어나 뜻 찾기" aria-label="단어나 뜻 찾기" value="${esc(query)}">
@@ -593,6 +626,7 @@ const VIEWS={
       ${[['hard','자주 적은 단어'],['learning','못 외운 단어'],['done','암기 완료']].map(([id,t])=>`<button data-act="box" data-b="${id}" aria-pressed="${boxTab===id}">${t} <b>${lists[id].length}</b></button>`).join('')}
     </div>`}
     ${boxTab==='hard'&&!q?`<div class="legend"><span><span class="t1">2회</span></span><span><span class="t2">3회</span></span><span><span class="t3">4회 이상</span></span></div>`:''}
+    ${list.length>=2?sortBar('sortBox',mode,showCount?[['count','횟수순'],...SORTS]:SORTS):''}
     <ul class="notebook">${list.length?list.map(k=>rowHTML(k,{chips:true})).join(''):`<li class="empty">${emptyText}</li>`}</ul>`;
   }
 };
@@ -619,7 +653,7 @@ function cardHTML(){
 let viewKey='';
 function render(){
   const a=document.activeElement,id=a&&a.id,sel=a&&a.selectionStart;
-  const key=`${tab}|${day}`;
+  const key=`${tab}|${day}|${cfg.sortDiary||''}|${keysOn(day).length>=2}`;
   if(key===viewKey&&tab==='diary'&&['word','mine','memo'].includes(id)){
     const t=document.createElement('template');t.innerHTML=VIEWS.diary();
     $('.notebook').replaceWith(t.content.querySelector('.notebook'));
@@ -646,7 +680,7 @@ function nextCard(fn){const k=session.q.shift();fn&&fn(k);session.open=false;ren
 function openWord(k,date){
   const w=S.words[k],d=$('#dlg');
   d.innerHTML=`<form class="dlg" id="wordForm" method="dialog" data-k="${esc(k)}" ${date?`data-d="${date}"`:''}>
-    <h2>${esc(w.w)}</h2>
+    <label class="field">영어 단어<input id="fWord" value="${esc(w.w)}" autocapitalize="none" autocorrect="off" spellcheck="false"></label>
     <div class="row2">
       <label class="field">품사<input id="fPos" value="${esc(w.pos)}"></label>
       <label class="field">한국어 뜻<input id="fKo" value="${esc(w.ko)}"></label>
@@ -662,10 +696,14 @@ function openWord(k,date){
     </div></form>`;
   d.showModal();
 }
+const SIZES={s:['작게',.9],m:['보통',1],l:['크게',1.15]};
+function applySize(){document.documentElement.style.setProperty('--fs',(SIZES[cfg.size]||SIZES.m)[1])}
 function openSettings(){
   const d=$('#dlg');
   d.innerHTML=`<form class="dlg" id="setForm" method="dialog">
     <h2>설정</h2>
+    <h3>글씨 크기</h3>
+    <div class="pick" role="group" aria-label="글씨 크기">${Object.entries(SIZES).map(([id,[t]])=>`<button type="button" data-act="size" data-s="${id}" aria-pressed="${(cfg.size||'m')===id}">${t}</button>`).join('')}</div>
     ${PREVIEW?`<p class="note">미리보기에서는 연결 불가. 토큰은 GitHub에 올린 실제 앱에서만 입력.</p><div class="btns"><button type="button" class="btn line" data-act="close">닫기</button></div>`:`
     ${syncMsg?`<p class="err">${esc(syncMsg)}</p>`:''}
     <h3>GitHub 저장소</h3>
@@ -731,6 +769,9 @@ document.addEventListener('click',e=>{
   else if(act==='copycode'){const code='vocab1:'+toB64(JSON.stringify({owner:cfg.owner,repo:cfg.repo,token:cfg.token,gemini:cfg.gemini||''}));
     navigator.clipboard.writeText(code).then(()=>toast('연결 코드 복사됨'),()=>{$('#sCode').value=code;$('#sCode').select();toast('아래 칸의 코드를 직접 복사 필요')})}
   else if(act==='applycode'){try{const raw=$('#sCode').value.trim().replace(/^vocab1:/,'');connect(JSON.parse(fromB64(raw)));toast('이 기기 연결됨')}catch{toast('연결 코드가 올바르지 않음')}}
+  else if(act==='sortDiary'){cfg.sortDiary=b.dataset.s;saveCfg();render()}
+  else if(act==='sortBox'){cfg.sortBox=b.dataset.s;saveCfg();render()}
+  else if(act==='size'){cfg.size=b.dataset.s;saveCfg();applySize();b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b))}
   else if(act==='export')exportData();
 });
 document.addEventListener('keydown',e=>{
@@ -746,8 +787,10 @@ document.addEventListener('submit',e=>{
     addWord(word,mean,day);$('#word')?.focus();
   }else if(e.target.id==='wordForm'){
     const k=e.target.dataset.k,w=S.words[k];
-    const ko=$('#fKo').value.trim();
-    setMeta(w,{pos:$('#fPos').value.trim(),ko,ex:$('#fEx').value.trim(),exKo:$('#fExKo').value.trim(),mine:ko!==w.ko?!!ko:w.mine});
+    const ko=$('#fKo').value.trim(),f={pos:$('#fPos').value.trim(),ko,ex:$('#fEx').value.trim(),exKo:$('#fExKo').value.trim()};
+    const text=$('#fWord').value.trim().replace(/\s+/g,' '),nk=norm(text);
+    if(nk&&nk!==k){renameWord(k,text,f);return}
+    setMeta(w,{...f,w:nk?text:w.w,mine:ko!==w.ko?!!ko:w.mine});
     commit();
   }else if(e.target.id==='setForm'){
     e.preventDefault();
@@ -768,7 +811,7 @@ addEventListener('focus',()=>{if(Date.now()-lastSync>20000)syncNow()});
 
 /* ---------- start ---------- */
 if(PREVIEW&&!Object.keys(S.words).length&&window.__VOCAB_SEED__)S=window.__VOCAB_SEED__();
-reindex();render();paintStatus();
+applySize();reindex();render();paintStatus();
 Object.keys(S.words).forEach(enqueue);
 syncNow();
 if(!PREVIEW&&'serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
