@@ -7,8 +7,8 @@
 <!--PREVIEW_META-->
 <title>보카박스</title>
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="icon" href="icon-180.png">
+<link rel="apple-touch-icon" href="icon-180.png?v=2">
+<link rel="icon" href="icon-180.png?v=2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="보카박스">
 <meta name="theme-color" content="#EEF4F4">
@@ -26,16 +26,11 @@
   --fs:1;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+@media (prefers-color-scheme:dark){:root{
   --paper:#0F1A22; --page:#16252E; --ink:#E6F0F0; --ink2:#9DB3B8; --rule:#29404A; --margin:#2F6A65;
   --accent:#4FD1C5; --sheet:#0F766E; --on-sheet:#F0FDFA; --tint:#17403F; --warn:#F2B84B; --toast-btn:#0F766E;
   --hl1:#E9D64A; --hl2:#F2A950; --hl3:#B8312F; --hl-ink:#16283A; --hl3-ink:#FFFFFF;
   --cal:rgba(20,184,166,.5); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#0F1A22; --page:#16252E; --ink:#E6F0F0; --ink2:#9DB3B8; --rule:#29404A; --margin:#2F6A65;
-  --accent:#4FD1C5; --sheet:#0F766E; --on-sheet:#F0FDFA; --tint:#17403F; --warn:#F2B84B; --toast-btn:#0F766E;
-  --hl1:#E9D64A; --hl2:#F2A950; --hl3:#B8312F; --hl-ink:#16283A; --hl3-ink:#FFFFFF;
-  --cal:rgba(20,184,166,.5); color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 calc(16px*var(--fs))/1.55 var(--body);overflow-x:hidden}
@@ -49,7 +44,8 @@ h1,h2,h3{margin:0;font-family:var(--body);font-weight:700;letter-spacing:-.01em;
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .brand{font:700 calc(18px*var(--fs))/1 var(--body)}
-.status{display:flex;align-items:center;gap:7px;font-size:calc(13px*var(--fs));color:var(--ink2);min-height:32px}
+.status{display:flex;align-items:center;gap:7px;font-size:calc(13px*var(--fs));color:var(--ink2);min-height:44px}
+.status .gear{color:var(--ink);margin-left:3px;flex:none}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--ink2);flex:none}
 .status.ok i{background:var(--accent)}.status.bad i{background:var(--warn)}.status.busy i{background:#D99A1E}
 main{padding-block:0 104px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:820px;width:100%;margin-inline:auto;min-width:0}
@@ -67,7 +63,8 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 }
 
 .dayhead{display:flex;align-items:center;gap:6px;padding-block:6px 14px}
-.dayhead h1{font-size:calc(clamp(25px,6vw,34px)*var(--fs));line-height:1.2;flex:1;min-width:0}
+.dayhead h1,.pagetitle{font-size:calc(clamp(25px,6vw,34px)*var(--fs));line-height:1.2}
+.dayhead h1{flex:1;min-width:0}
 .icon{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;font-size:calc(22px*var(--fs));color:var(--ink2);text-align:center}
 .icon:hover{background:var(--page)}
 .today-link{font-size:calc(14px*var(--fs));color:var(--accent);font-weight:500;padding:8px}
@@ -89,7 +86,7 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 .memo output.full{color:var(--warn);font-weight:600}
 .strip{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:11px 14px;margin-bottom:14px;background:var(--sheet);color:var(--on-sheet);border-radius:4px;font-weight:500}
 
-.notebook{list-style:none;margin:0;padding:0;background:var(--page);border:1px solid var(--rule);border-radius:4px;position:relative;overflow:hidden}
+.notebook,.drill{list-style:none;margin:0;padding:0;background:var(--page);border:1px solid var(--rule);border-radius:4px;position:relative;overflow:hidden}
 .notebook::before{content:"";position:absolute;top:0;bottom:0;left:42px;width:1px;background:var(--margin)}
 .row{display:grid;grid-template-columns:42px minmax(0,1fr);border-bottom:1px solid var(--rule);position:relative}
 .row:last-child{border-bottom:0}
@@ -126,7 +123,7 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 .seg button[aria-pressed="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent);font-weight:600}
 .seg b{font-weight:500;font-variant-numeric:tabular-nums}
 .search{margin-bottom:12px}
-.pagetitle{font-size:calc(clamp(25px,6vw,34px)*var(--fs));padding-block:6px 14px}
+.pagetitle{padding-block:6px 14px}
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:calc(13px*var(--fs));color:var(--ink2);margin-bottom:12px}
 .legend span span{padding-inline:6px}
 
@@ -142,7 +139,6 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 .section{margin-bottom:30px}
 .sechead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
 .sechead h2{font-size:calc(21px*var(--fs))}
-.drill{list-style:none;margin:0;padding:0;background:var(--page);border:1px solid var(--rule);border-radius:4px;position:relative;overflow:hidden}
 .drill li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);position:relative}
 .drill li+li{border-top:1px solid var(--rule)}
 .drill .a,.drill .b{padding:11px 14px;min-height:48px}
@@ -174,6 +170,9 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 dialog{border:0;border-radius:6px;background:var(--page);color:var(--ink);padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px)}
 dialog::backdrop{background:rgba(15,24,42,.5)}
 .dlg{padding:20px;display:grid;gap:13px}
+.dlghead{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:1;background:var(--page);margin:-20px -20px 0;padding:14px 12px 10px 20px}
+.x{width:44px;height:44px;display:grid;place-items:center;text-align:center;font-size:calc(19px*var(--fs));color:var(--ink);border-radius:50%}
+.x:hover{background:var(--paper)}
 .dlg h2{font-size:calc(24px*var(--fs));overflow-wrap:anywhere}
 .dlg h3{font-size:calc(17px*var(--fs));margin-top:8px}
 .field{display:grid;gap:4px;font-size:calc(14px*var(--fs));color:var(--ink2)}
@@ -194,7 +193,7 @@ dialog::backdrop{background:rgba(15,24,42,.5)}
 <div class="app">
   <header class="topbar">
     <span class="brand">보카박스</span>
-    <button class="status" id="status" data-act="settings" aria-label="동기화 상태와 설정 열기"><i></i><span id="statusText">이 기기에만 저장</span></button>
+    <button class="status" id="status" data-act="settings" aria-label="설정 열기"><i></i><span id="statusText">이 기기에만 저장</span><svg class="gear" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></button>
   </header>
   <nav class="tabs" id="tabs" aria-label="화면 이동">
     <button data-tab="diary">일기장</button>
@@ -290,7 +289,9 @@ const peeks=new Set();
 const fillState={};
 
 const memoOf=d=>S.notes[d]?.t||'';
-function commit(){reindex();store.set(DATA_KEY,S);render();scheduleSync()}
+const saveData=()=>store.set(DATA_KEY,S);
+const fillAll=()=>Object.keys(S.words).forEach(enqueue);
+function commit(){reindex();saveData();render();scheduleSync()}
 function setMeta(w,patch){Object.assign(w,patch);w.metaAt=Date.now()}
 function setStatus(w,st){w.st=st;w.stAt=Date.now()}
 
@@ -491,7 +492,7 @@ async function syncNow(){
       const merged=merge(S,data||empty());
       const changedLocal=stable(merged)!==stable(S);
       S=merged;
-      if(changedLocal){reindex();store.set(DATA_KEY,S);renderSoft();Object.keys(S.words).forEach(enqueue)}
+      if(changedLocal){reindex();saveData();renderSoft();fillAll()}
       if(data&&stable(merged)===stable(data)){done=true;break}
       const p=await ghPut(merged,sha);
       if(p.ok){done=true;break}
@@ -509,8 +510,7 @@ async function syncNow(){
     if(again){again=false;scheduleSync()}
   }
 }
-function paintStatus(cls,text){
-  if(!cls){cls=connected()?'':'';text=connected()?'연결됨':(PREVIEW?'미리보기':'이 기기에만 저장')}
+function paintStatus(cls='',text=connected()?'연결됨':PREVIEW?'미리보기':'이 기기에만 저장'){
   $('#status').className='status '+cls;$('#statusText').textContent=text;
 }
 
@@ -592,7 +592,7 @@ const VIEWS={
     return`<h1 class="pagetitle">복습</h1>
     <section class="section">
       <div class="sechead"><h2>${label} 적은 단어</h2>
-        ${ks.length?`<button class="btn line" data-act="cover">${covered?'시트 치우기':'시트 덮기'}</button>`:''}</div>
+        ${ks.length?`<button class="btn line" data-act="cover">${covered?'뜻 보기':'뜻 가리기'}</button>`:''}</div>
       ${ks.length?`<ul class="drill ${covered?'covered':''}">${ks.map(k=>{const w=S.words[k];return`<li class="${peeks.has(k)?'peek':''}" data-act="peek" data-k="${esc(k)}" role="button" tabindex="0">
         <div class="a"><span class="w ${w.st==='mastered'?'':tier(byKey[k].size)}">${esc(w.w)}</span></div>
         <div class="b">${meanHTML(k)}</div></li>`}).join('')}<div class="cover-sheet" aria-hidden="true"></div></ul>
@@ -674,7 +674,7 @@ function startSession(scope){
   const keys=scope==='hard'?hard():scope==='prev'?keysOn(p).filter(k=>S.words[k].st!=='mastered'):learning();
   session={scope,q:shuffle(keys),total:keys.length,again:0,open:false};render();
 }
-function nextCard(fn){const k=session.q.shift();fn&&fn(k);session.open=false;render()}
+function nextCard(){session.q.shift();session.open=false;render()}
 
 /* ---------- dialogs ---------- */
 function openWord(k,date){
@@ -701,10 +701,10 @@ function applySize(){document.documentElement.style.setProperty('--fs',(SIZES[cf
 function openSettings(){
   const d=$('#dlg');
   d.innerHTML=`<form class="dlg" id="setForm" method="dialog">
-    <h2>설정</h2>
+    <div class="dlghead"><h2>설정</h2><button type="button" class="x" data-act="close" aria-label="설정 닫기">✕</button></div>
     <h3>글씨 크기</h3>
     <div class="pick" role="group" aria-label="글씨 크기">${Object.entries(SIZES).map(([id,[t]])=>`<button type="button" data-act="size" data-s="${id}" aria-pressed="${(cfg.size||'m')===id}">${t}</button>`).join('')}</div>
-    ${PREVIEW?`<p class="note">미리보기에서는 연결 불가. 토큰은 GitHub에 올린 실제 앱에서만 입력.</p><div class="btns"><button type="button" class="btn line" data-act="close">닫기</button></div>`:`
+    ${PREVIEW?`<p class="note">미리보기에서는 연결 불가. 토큰은 GitHub에 올린 실제 앱에서만 입력.</p>`:`
     ${syncMsg?`<p class="err">${esc(syncMsg)}</p>`:''}
     <h3>GitHub 저장소</h3>
     <div class="row2">
@@ -715,7 +715,7 @@ function openSettings(){
     <h3>자동 채우기</h3>
     <label class="field">Gemini API 키 (비워두면 무료 사전 사용)<input id="sGemini" type="password" autocomplete="off" value="${esc(cfg.gemini||'')}"></label>
     ${aiError?`<p class="err">최근 Gemini 오류: ${esc(aiError)}</p>`:''}
-    <div class="btns"><button type="submit" class="btn" value="save">저장하고 연결</button><button type="button" class="btn line" data-act="close">닫기</button></div>
+    <div class="btns"><button type="submit" class="btn" value="save">저장하고 연결</button></div>
     <h3>다른 기기 연결</h3>
     <p class="note">연결 코드에 토큰이 포함됨. 비밀번호처럼 관리 필요. 다른 기기에 붙여넣은 뒤 메모 삭제 권장.</p>
     <div class="btns"><button type="button" class="btn line" data-act="copycode" ${cfg.token?'':'disabled'}>연결 코드 복사</button></div>
@@ -756,14 +756,14 @@ document.addEventListener('click',e=>{
   else if(act==='tab'){tab=b.dataset.t;render();window.scrollTo(0,0)}
   else if(act==='month'){const cur=calMonth||today().slice(0,7);const[y,m]=cur.split('-').map(Number);const x=new Date(y,m-1+Number(n),1);calMonth=ymd(x).slice(0,7);render()}
   else if(act==='box'){boxTab=b.dataset.b;render()}
-  else if(act==='cover'){covered=!covered;peeks.clear();const u=$('.drill');u&&u.classList.toggle('covered',covered);document.querySelectorAll('.drill li').forEach(l=>l.classList.remove('peek'));b.textContent=covered?'시트 치우기':'시트 덮기'}
+  else if(act==='cover'){covered=!covered;peeks.clear();const u=$('.drill');u&&u.classList.toggle('covered',covered);document.querySelectorAll('.drill li').forEach(l=>l.classList.remove('peek'));b.textContent=covered?'뜻 보기':'뜻 가리기'}
   else if(act==='peek'){peeks.has(k)?peeks.delete(k):peeks.add(k);b.classList.toggle('peek')}
   else if(act==='start')startSession(b.dataset.s);
   else if(act==='stop'){session=null;render()}
   else if(act==='restart')startSession(session.scope);
   else if(act==='reveal'){session.open=true;render()}
   else if(act==='next')nextCard();
-  else if(act==='again')nextCard(x=>{session.again++;const i=Math.min(session.q.length,2+Math.floor(Math.random()*Math.max(1,session.q.length-1)));session.q.splice(i,0,x)});
+  else if(act==='again'){const q=session.q,x=q[0];session.again++;nextCard();q.splice(Math.min(q.length,2+Math.floor(Math.random()*Math.max(1,q.length-1))),0,x);render()}
   else if(act==='del'){$('#dlg').close();removeEntries(k,d||null)}
   else if(act==='refill'){const w=S.words[k];setMeta(w,{pos:'',ko:'',ex:'',exKo:'',mine:false});delete fillState[k];$('#dlg').close();commit();enqueue(k)}
   else if(act==='copycode'){const code='vocab1:'+toB64(JSON.stringify({owner:cfg.owner,repo:cfg.repo,token:cfg.token,gemini:cfg.gemini||''}));
@@ -795,13 +795,13 @@ document.addEventListener('submit',e=>{
   }else if(e.target.id==='setForm'){
     e.preventDefault();
     connect({owner:$('#sOwner').value.trim(),repo:$('#sRepo').value.trim(),token:$('#sToken').value.trim(),gemini:$('#sGemini').value.trim()});
-    toast('설정 저장됨');Object.keys(S.words).forEach(k=>{delete fillState[k];enqueue(k)});
+    toast('설정 저장됨');Object.keys(fillState).forEach(k=>delete fillState[k]);fillAll();
   }
 });
 document.addEventListener('input',e=>{
   if(e.target.id==='search'){query=e.target.value;render()}
   if(e.target.id==='memo'){
-    const t=e.target.value;S.notes[day]={t,at:Date.now()};store.set(DATA_KEY,S);scheduleSync();
+    const t=e.target.value;S.notes[day]={t,at:Date.now()};saveData();scheduleSync();
     const c=$('#memoCount');c.textContent=`${t.length}/${MEMO_MAX}`;c.classList.toggle('full',t.length>=MEMO_MAX);
   }
 });
@@ -812,10 +812,9 @@ addEventListener('focus',()=>{if(Date.now()-lastSync>20000)syncNow()});
 /* ---------- start ---------- */
 if(PREVIEW&&!Object.keys(S.words).length&&window.__VOCAB_SEED__)S=window.__VOCAB_SEED__();
 applySize();reindex();render();paintStatus();
-Object.keys(S.words).forEach(enqueue);
+fillAll();
 syncNow();
 if(!PREVIEW&&'serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-window.__vocabTest={merge,stable};
 </script>
 </body>
 </html>
