@@ -1,4 +1,4 @@
-const CACHE='vocab-v3';
+const CACHE='vocab-v4';
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','manifest.webmanifest','icon-180.png','icon-512.png'])))});
 self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch',e=>{

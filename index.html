@@ -20,7 +20,7 @@
 :root{
   --paper:#EEF4F4; --page:#FCFEFD; --ink:#16283A; --ink2:#50646F; --rule:#CBDDDD; --margin:#7FC8BF;
   --accent:#0F766E; --sheet:#0F766E; --on-sheet:#F0FDFA; --tint:#D3EFEB; --warn:#9A5B00; --toast-btn:#5EEAD4;
-  --hl1:#8A6A00; --hl2:#B4530F; --hl3:#A92B2B; --hl-ink:#FFFFFF;
+  --hl1:#FFF07A; --hl2:#FFC978; --hl3:#A92B2B; --hl-ink:#16283A; --hl3-ink:#FFFFFF;
   --cal:rgba(15,118,110,.5);
   --body:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR",sans-serif;
   color-scheme:light;
@@ -28,12 +28,12 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#0F1A22; --page:#16252E; --ink:#E6F0F0; --ink2:#9DB3B8; --rule:#29404A; --margin:#2F6A65;
   --accent:#4FD1C5; --sheet:#0F766E; --on-sheet:#F0FDFA; --tint:#17403F; --warn:#F2B84B; --toast-btn:#0F766E;
-  --hl1:#8F6F00; --hl2:#B4530F; --hl3:#B8312F; --hl-ink:#FFFFFF;
+  --hl1:#E9D64A; --hl2:#F2A950; --hl3:#B8312F; --hl-ink:#16283A; --hl3-ink:#FFFFFF;
   --cal:rgba(20,184,166,.5); color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#0F1A22; --page:#16252E; --ink:#E6F0F0; --ink2:#9DB3B8; --rule:#29404A; --margin:#2F6A65;
   --accent:#4FD1C5; --sheet:#0F766E; --on-sheet:#F0FDFA; --tint:#17403F; --warn:#F2B84B; --toast-btn:#0F766E;
-  --hl1:#8F6F00; --hl2:#B4530F; --hl3:#B8312F; --hl-ink:#FFFFFF;
+  --hl1:#E9D64A; --hl2:#F2A950; --hl3:#B8312F; --hl-ink:#16283A; --hl3-ink:#FFFFFF;
   --cal:rgba(20,184,166,.5); color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -99,7 +99,7 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600;box-sha
 .entry:hover{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 7px;min-width:0}
 .w{font:600 18px/1.35 var(--body);overflow-wrap:anywhere;padding-inline:4px;margin-inline:-4px;border-radius:2px}
-.t1{background:var(--hl1);color:var(--hl-ink)}.t2{background:var(--hl2);color:var(--hl-ink)}.t3{background:var(--hl3);color:var(--hl-ink)}
+.t1{background:var(--hl1);color:var(--hl-ink)}.t2{background:var(--hl2);color:var(--hl-ink)}.t3{background:var(--hl3);color:var(--hl3-ink)}
 .n{font-size:12px;font-weight:600;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
 .mean{min-width:0;overflow-wrap:anywhere}
 .pos{font-size:13px;color:var(--ink2);margin-right:5px}
